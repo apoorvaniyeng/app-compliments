@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Compliment Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #compliment {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Compliment Generator</h1>
+    <button onclick="getCompliment()">Generate Compliment</button>
+    <div id="compliment"></div>
+
+    <script>
+        async function getCompliment() {
+            const response = await fetch('/compliment');  // calls Flask route
+            const data = await response.json();           // parses JSON
+            document.getElementById('compliment').innerText = data.compliment; // display
+        }
+    </script>
+</body>
+</html>
